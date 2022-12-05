@@ -1,0 +1,13 @@
+{
+	"manifest_version": 1,
+	"id": "albert.joplin.plugin.jl21",
+	"app_min_version": "2.8",
+	"version": "1.0.0",
+	"name": "Custom Hotkeys",
+	"description": "Custom Hotkeys",
+	"author": "Albert Pham",
+	"homepage_url": "https://github.com/pnphuong29/joplin-plugin-jl21-pub",
+	"repository_url": "https://github.com/pnphuong29/joplin-plugin-jl21-pub",
+	"keywords": [],
+	"categories": []
+}
