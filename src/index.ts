@@ -18,6 +18,19 @@ joplin.plugins.register({
         });
 
         await joplin.commands.register({
+            name: 'apOpenFolderDialog',
+            label: 'Show folder properties',
+            execute: async () => {
+                const folder = await joplin.workspace.selectedFolder();
+                await joplin.commands.execute('openFolderDialog', {
+                    isNew: false,
+                    folderId: folder.id,
+                    parentId: folder.parent_id,
+                });
+            },
+        });
+
+        await joplin.commands.register({
             name: 'apShowNoteProperties',
             label: 'Show note properties',
             execute: async (noteId: string) => {
@@ -46,15 +59,29 @@ joplin.plugins.register({
         );
 
         await joplin.views.menuItems.create(
+            'ToolsApOpenFolderDialog',
+            'apOpenFolderDialog',
+            MenuItemLocation.Tools,
+            { accelerator: 'CmdOrCtrl+Shift+R' }
+        );
+
+        await joplin.views.menuItems.create(
+            'noteListMenuItemApOpenFolderDialog',
+            'apOpenFolderDialog',
+            MenuItemLocation.NoteListContextMenu,
+            { accelerator: 'CmdOrCtrl+Shift+R' }
+        );
+
+        await joplin.views.menuItems.create(
             'ToolsApShowNoteProperties',
-            'apShowNoteProperties', 
+            'apShowNoteProperties',
             MenuItemLocation.Tools,
             { accelerator: 'CmdOrCtrl+Shift+I' }
         );
 
         await joplin.views.menuItems.create(
             'noteListMenuItemApShowNoteProperties',
-            'apShowNoteProperties', 
+            'apShowNoteProperties',
             MenuItemLocation.NoteListContextMenu,
             { accelerator: 'CmdOrCtrl+Shift+I' }
         );
